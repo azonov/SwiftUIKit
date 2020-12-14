@@ -1,0 +1,33 @@
+PODS:
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SwiftUIKit (1.0.0)
+
+DEPENDENCIES:
+  - RxCocoa
+  - RxSwift
+  - SwiftUIKit (from `../`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+
+EXTERNAL SOURCES:
+  SwiftUIKit:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SwiftUIKit: 702efcf63c41f58eba11047e6ebf52265d775e48
+
+PODFILE CHECKSUM: cc8b6eafa8866878689d32238eb480578d3801cc
+
+COCOAPODS: 1.9.3

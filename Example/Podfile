@@ -1,0 +1,10 @@
+platform :ios, '11.0'
+use_frameworks!
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'SwiftUIKitExample' do
+  pod 'SwiftUIKit', :path => '../'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+end
