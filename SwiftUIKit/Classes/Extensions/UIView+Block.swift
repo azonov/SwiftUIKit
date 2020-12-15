@@ -14,7 +14,7 @@ public struct BlockViewAttributes {
 
 public protocol BlockViewExtendable: UIView {
     
-    var Block: BlockViewAttributes { get set }
+    var block: BlockViewAttributes { get set }
     
     func build(block: Block, with context: BlockContext)
     func addConstrainedSubview(_ subview: UIView, with padding: UIEdgeInsets?)
@@ -36,7 +36,7 @@ extension UIView: BlockViewExtendable {
     }
     
     public func addConstrainedSubview(_ subview: UIView, with padding: UIEdgeInsets? = nil) {
-        let attributes = subview.Block
+        let attributes = subview.block
         let padding = padding ?? UIEdgeInsets.zero
         
         self.addSubview(subview)
@@ -48,7 +48,7 @@ extension UIView: BlockViewExtendable {
         }
     }
     
-    public var Block: BlockViewAttributes {
+    public var block: BlockViewAttributes {
         get {
             if let attributes = objc_getAssociatedObject( self, &UIView.BlockViewAttributesKey ) as? BlockViewAttributes {
                 return attributes

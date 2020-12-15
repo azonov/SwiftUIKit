@@ -20,7 +20,7 @@ public protocol BlockViewType: BlockControllerType {
 public typealias Block = BlockViewType
 public struct Blocks { }
 public protocol BlockContaining: Block {
-    var Block: Block { get }
+    var block: Block { get }
 }
 
 public protocol BlocksContaining: Block {

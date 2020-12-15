@@ -35,7 +35,7 @@ extension Blocks {
 extension BlockModifying {
     
     public func position(_ position: Blocks.Position) -> Self {
-        return modified(BlockModifier(keyPath: \UIView.Block.position, value: position))
+        return modified(BlockModifier(keyPath: \UIView.block.position, value: position))
     }
     
 }

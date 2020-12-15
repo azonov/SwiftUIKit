@@ -125,4 +125,105 @@ extension BlockViewModifying {
         return modified(BlockModifier(keyPath: \UIView.isUserInteractionEnabled, value: isUserInteractionEnabled))
     }
     
+    public func contentCompressionResistancePriority(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) -> Self {
+        return modified(BlockModifierBlock<UIView> { view, _ in
+            view.setContentCompressionResistancePriority(priority, for: axis)
+        })
+    }
+    
+    public func contentHuggingPriority(_ priority: UILayoutPriority, for axis: NSLayoutConstraint.Axis) -> Self {
+        return modified(BlockModifierBlock<UIView> { view, _ in
+            view.setContentHuggingPriority(priority, for: axis)
+        })
+    }
+    
+    public func height(_ height: CGFloat, priority: Float = 999) -> Self {
+        return modified(BlockModifierBlock<UIView> { view, _ in
+            let height = view.heightAnchor.constraint(equalToConstant: height)
+            height.priority = UILayoutPriority(priority)
+            height.isActive = true
+        })
+    }
+    
+    public func height(min height: CGFloat, priority: Float = 999) -> Self {
+        return modified(BlockModifierBlock<UIView> { view, _ in
+            let height = view.heightAnchor.constraint(greaterThanOrEqualToConstant: height)
+            height.priority = UILayoutPriority(priority)
+            height.isActive = true
+        })
+    }
+    
+    public func height(max height: CGFloat, priority: Float = 999) -> Self {
+        return modified(BlockModifierBlock<UIView> { view, _ in
+            let height = view.heightAnchor.constraint(lessThanOrEqualToConstant: height)
+            height.priority = UILayoutPriority(priority)
+            height.isActive = true
+        })
+    }
+    
+    public func width(_ width: CGFloat, priority: Float = 999) -> Self {
+        return modified(BlockModifierBlock<UIView> { view, _ in
+            let width = view.widthAnchor.constraint(equalToConstant: width)
+            width.priority = UILayoutPriority(priority)
+            width.isActive = true
+        })
+    }
+    
+    public func width(min width: CGFloat, priority: Float = 999) -> Self {
+        return modified(BlockModifierBlock<UIView> { view, _ in
+            let width = view.widthAnchor.constraint(greaterThanOrEqualToConstant: width)
+            width.priority = UILayoutPriority(priority)
+            width.isActive = true
+        })
+    }
+    
+    public func width(max width: CGFloat, priority: Float = 999) -> Self {
+        return modified(BlockModifierBlock<UIView> { view, _ in
+            let width = view.widthAnchor.constraint(lessThanOrEqualToConstant: width)
+            width.priority = UILayoutPriority(priority)
+            width.isActive = true
+        })
+    }
+    
+    public func border(color: UIColor = .gray, width: CGFloat = 1, radius: CGFloat = 0) -> Self {
+        return modified(BlockModifierBlock({ (view, context) in
+            view.layer.borderColor = color.cgColor
+            view.layer.borderWidth = width
+            view.layer.cornerRadius = radius
+            view.clipsToBounds = true
+        }))
+    }
+    
+    public func borderColor(_ borderColor: UIColor) -> Self {
+        return modified(BlockModifier(keyPath: \UIView.layer.borderColor, value: borderColor.cgColor))
+    }
+    
+    public func borderWidth(_ borderWidth: CGFloat) -> Self {
+        return modified(BlockModifier(keyPath: \UIView.layer.borderWidth, value: borderWidth))
+    }
+    
+    public func cornerRadius(_ cornerRadius: CGFloat) -> Self {
+        return modified(BlockModifierBlock({ (view, context) in
+            view.layer.cornerRadius = cornerRadius
+            view.clipsToBounds = true
+        }))
+    }
+    
+    public func shadow(offset: CGSize, color: UIColor = .gray, opacity: Float = 0.5, radius: CGFloat = 0) -> Self {
+        return modified(BlockModifierBlock({ (view, context) in
+            view.layer.shadowOffset = offset
+            view.layer.shadowColor = color.cgColor
+            view.layer.shadowOpacity = opacity
+            view.layer.shadowRadius = radius
+            view.clipsToBounds = false
+        }))
+    }
+    
+    public func safeArea(_ value: Bool) -> Self {
+        return modified(BlockModifier(keyPath: \UIView.block.safeArea, value: value))
+    }
+    
+    public func with<View:UIView>(_ block: @escaping BlockModifierBlockType<View>) -> Self {
+        return modified(BlockModifierBlock(block))
+    }
 }
