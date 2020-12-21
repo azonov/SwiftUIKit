@@ -15,7 +15,7 @@ public struct ImageBlock: BlockViewModifying,
     
     public var modifiers = BlockModifiers()
     
-    public init(_ image: UIImage) {
+    public init(_ image: UIImage?) {
         self.modifiers.binding = BlockModifier(keyPath: \UIImageView.image, value: image)
     }
     

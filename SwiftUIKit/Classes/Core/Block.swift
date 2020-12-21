@@ -111,7 +111,7 @@ open class UIBlockHostController: UIViewController {
 extension BlockContext {
     
     public func rebuild() {
-        (self.viewController as? UIBlockHostController)?.rebuild()
+        self.viewController?.rebuild()
     }
     
 }

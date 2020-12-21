@@ -10,7 +10,7 @@ import UIKit
 
 public struct BlockContext {
     
-    public weak var viewController: UIViewController?
+    public weak var viewController: UIBlockHostController?
     public weak var parentView: UIView?
     public weak var view: UIView?
     public var attributes: [String:Any?] = [:]
@@ -62,7 +62,7 @@ public struct BlockContext {
         return context
     }
     
-    public func set(viewController: UIViewController) -> BlockContext {
+    public func set(viewController: UIBlockHostController) -> BlockContext {
         var context = self
         context.viewController = viewController
         return context
