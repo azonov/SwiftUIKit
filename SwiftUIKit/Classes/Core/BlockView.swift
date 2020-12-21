@@ -12,7 +12,6 @@ public protocol BlockView: Block {
     func block(_ context: BlockContext) -> Block
     
     func build(_ block: Block, with context: BlockContext) -> UIView
-    
 }
 
 extension BlockView {
@@ -29,5 +28,4 @@ extension BlockView {
         }
         return view
     }
-    
 }

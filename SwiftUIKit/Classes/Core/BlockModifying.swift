@@ -8,6 +8,7 @@
 import UIKit
 
 public struct BlockModifiers {
+    
     public var list: Array<AnyBlockModifier>?
     public var contextModifier: BlockContextModifier?
     public var binding: AnyBlockModifier? = nil
@@ -47,6 +48,7 @@ extension BlockModifying {
         return Block
     }
 }
+
 public protocol AnyBlockModifier {
     func apply(to view: UIView, with context: BlockContext)
 }
@@ -84,7 +86,6 @@ public struct BlockModifierBlock<View:UIView>: AnyBlockModifier {
             modifier(view, context)
         }
     }
-    
 }
 
 extension BlockViewModifying {

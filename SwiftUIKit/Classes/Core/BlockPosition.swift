@@ -5,7 +5,10 @@
 //  Created by Andrey Zonov on 13.12.2020.
 //
 
+import UIKit
+
 extension Blocks {
+    
     public enum Position {
         
         case fill
@@ -37,7 +40,6 @@ extension BlockModifying {
     public func position(_ position: Blocks.Position) -> Self {
         return modified(BlockModifier(keyPath: \UIView.block.position, value: position))
     }
-    
 }
 
 extension Blocks.Position {
@@ -154,5 +156,4 @@ extension Blocks.Position {
         anchor.priority = .defaultHigh
         return anchor
     }
-    
 }

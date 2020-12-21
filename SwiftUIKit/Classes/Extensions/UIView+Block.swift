@@ -5,11 +5,12 @@
 //  Created by Andrey Zonov on 13.12.2020.
 //
 
+import UIKit
+
 public struct BlockViewAttributes {
     
     var position: Blocks.Position = .fill
     var safeArea = true
-    
 }
 
 public protocol BlockViewExtendable: UIView {
@@ -18,10 +19,10 @@ public protocol BlockViewExtendable: UIView {
     
     func build(block: Block, with context: BlockContext)
     func addConstrainedSubview(_ subview: UIView, with padding: UIEdgeInsets?)
-    
 }
 
 public protocol BlockViewCustomConstraints {
+    
     func addCustomConstraints()
 }
 
@@ -63,5 +64,4 @@ extension UIView: BlockViewExtendable {
     public func viewWithID<T,V:UIView>(_ id: T) -> V? where T: RawRepresentable, T.RawValue == Int {
         return viewWithTag(id.rawValue) as? V
     }
-    
 }

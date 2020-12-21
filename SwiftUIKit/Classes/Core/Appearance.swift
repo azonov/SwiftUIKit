@@ -5,6 +5,7 @@
 //  Created by Andrey Zonov on 13.12.2020.
 //
 
+import UIKit
 
 extension BlockContext {
     
@@ -18,7 +19,6 @@ extension BlockContext {
     public func set(theme: BlockAppearance) -> BlockContext {
         return put(theme as BlockAppearance)
     }
-    
 }
 
 public struct BlockAppearance {
@@ -43,10 +43,6 @@ public struct BlockAppearance {
     public mutating func update(_ updater: @escaping (_ theme: inout BlockAppearance) -> Void) {
         updater(&self)
     }
-    
-}
-
-extension BlockAppearance {
     
     public static var defaultTheme: BlockAppearance = {
         if #available(iOS 13, *) {
@@ -73,7 +69,6 @@ extension BlockAppearance {
             return BlockAppearance(color: color, font: font)
         }
     }()
-    
 }
 
 extension BlockViewModifying {
@@ -91,5 +86,4 @@ extension BlockViewModifying {
         }
         return modified { $0.modifiers.contextModifier = modifier }
     }
-    
 }

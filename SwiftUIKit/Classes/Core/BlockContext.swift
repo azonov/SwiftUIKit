@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 public struct BlockContext {
     
     public weak var viewController: UIBlockHostController?
